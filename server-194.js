@@ -2,6 +2,11 @@ var express = require("express"),
   http = require("http"),
   app = express();
 
+app.use(express.urlencoded({
+  extended: true
+}));
+
+app.use(express.json());
 app.use(express.static(__dirname + "/client"));
 
 // Create our Express-powered HTTP server
@@ -20,3 +25,5 @@ app.get("/goodbye", function(req, res) {
 app.get("/", function(req, res) {
   res.send("This is the root route!");
 });
+
+console.log("Server running on port 3000");
