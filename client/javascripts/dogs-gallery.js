@@ -1,5 +1,10 @@
 // jshint esversion: 6
 
+let failHandler = () => {
+  console.log("Fail -- unknown breed");
+  $(".photos").empty().html("<h3>Error -- breed not found<h3>");
+};
+
 let clickHandler = function() {
   // build AJAX request URL
   let prefixURL = "http://api.flickr.com/services/feeds/photos_public.gne?tags=";
