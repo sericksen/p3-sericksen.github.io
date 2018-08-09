@@ -7,19 +7,19 @@ let failHandler = () => {
 
 let clickHandler = function() {
   // build AJAX request URL
-  let prefixURL = "https://dog.ceo/api/breed";
-  let suffixURL = "&format=json&jsoncallback=?";
+  let prefixURL = "https://dog.ceo/api/breed/";
+  let suffixURL = "/images";
   //get value entered by user from textbox
-  let flickrTag = $("input").val();
+  let dogTag = $("input").val();
   //let flickrTag = "buddha";
-  let requestURL = prefixURL + flickrTag + suffixURL;
+  let requestURL = prefixURL + dogTag + suffixURL;
   console.log(requestURL);
   //clear old photos
   $(".photos").html("");
   // sending AJAX request && process response
 
-  $.getJSON(requestURL, function(dogAPI) {
-    dogAPI.message.forEach(function(item, index) {
+  $.getJSON(requestURL, function(APIresponse) {
+    APIresponse.message.forEach(function(item, index) {
 
       //Flickr returns 20 images by default
       //We need only six images for the Gallery
